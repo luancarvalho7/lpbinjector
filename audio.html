@@ -12,11 +12,17 @@
     </audio>
 
     <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
         function gerarAudio() {
+            const textParam = getQueryParam('txt') || "PESSOAL GAY DA CALL"; // Default text if no parameter is provided
             const url = 'https://api.elevenlabs.io/v1/text-to-speech/hdg2JKTnw5yL9JUg6aqT/stream';
             const apiKey = '4038e6c7dbbe3b2ff38de15fac2429f4';
             const data = {
-                text: "PESSOAL GAY DA CALL",
+                text: textParam,
                 voice_settings: {
                     similarity_boost: 1,
                     stability: 1
